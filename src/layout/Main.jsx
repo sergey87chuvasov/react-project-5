@@ -15,8 +15,8 @@ class Main extends React.Component {
   }
 
   // функция по обновлен state и спущенная вниз
-  searchMovies = (str) => {
-    fetch(`http://www.omdbapi.com/?apikey=fec1a62a&s=${str}`)
+  searchMovies = (str, type = 'all') => {
+    fetch(`http://www.omdbapi.com/?apikey=fec1a62a&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
       .then((response) => response.json())
       .then((data) => this.setState({ movies: data.Search }));
   };
